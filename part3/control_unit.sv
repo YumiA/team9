@@ -1,6 +1,6 @@
 module control_unit(
     input logic     EQ,
-    input logic     control_input,
+    input logic     instr,
     output logic    RegWrite,
     output logic    ALUctrl,
     output logic    ALUsrc,
