@@ -19,7 +19,7 @@ module ProgramCounter#(
     else next_PC = inc_PC;
     end
     
-    //PC register. Synchronous with an asynchronous reset.
+    //PC register. Synchronous with an asynchronous reset
     always_ff @(posedge clk, posedge rst)
         if (rst) PC <= {PC_WIDTH{1'b0}};
     else PC <= next_PC;
