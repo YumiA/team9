@@ -29,9 +29,11 @@ int main(int argc, char **argv, char **env) {
 
     //run simulation for many clock cycles
     for (simcyc=0; simcyc<MAX_SIM_CYC; simcyc++)  {
-
+        
+        //PCsrc for selecting branch_PC from the multiplexer controlled by pressing the vbuddy rotary encoder
         vbdSetMode(0);
         top->PCsrc = vbdFlag();
+        //ImmOp controlled by vbuddy rotary encoder
         top->ImmOp = vbdValue();
 
         // dump variables into VCD file and toggle clock
@@ -45,7 +47,8 @@ int main(int argc, char **argv, char **env) {
             top->rst = 1;
         else
             top->rst = 0;
-
+        
+        //Plot PC on the vbuddy as a graph
         vbdPlot(int (top->PC), 0, 4096);
         vbdCycle(simcyc);
 
