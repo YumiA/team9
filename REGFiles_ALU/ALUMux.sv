@@ -19,10 +19,25 @@ module ALUMux #(
 
 
 //combinational so not doing always_ff
+//instead used always_comb
 
-//if ALUsrc = 0, Out = in0, or Out = in1
-if(ALUsrc) Out = in1
-else Out = in0;
+
+always_comb
+begin
+
+    //if ALUsrc = 0, Out = in0, or Out = in1
+
+    case(ALUsrc)
+
+    1'b0: Out = in0;
+    1'b1: Out = in1;
+    default: Out = in0;
+
+    endcase
+
+
+
+end
 
 
 endmodule

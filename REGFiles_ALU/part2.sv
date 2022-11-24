@@ -2,8 +2,8 @@ module part2 #(
 
     parameter ADDRESS_WIDTH = 5,
     parameter DATA_WIDTH = 32,
-    parameter IMM_LENGTH = 12,
-    parameter ALU_CONTROL_LENGTH = 3,
+    parameter IMM_LENGTH = 32,  //is sign extended to 32 bits
+    parameter ALU_CONTROL_LENGTH = 3
 
 
 )(
@@ -34,7 +34,7 @@ module part2 #(
     logic [DATA_WIDTH-1:0]  MuxOut;
     logic [DATA_WIDTH-1:0]  SUM;
 
-regFile Register (
+regFile Reg (
     .clk    (clk),
     .WE3    (WE3),
     .AD1    (AD1),
@@ -49,7 +49,7 @@ regFile Register (
 ALUMux Mux (
 
     .ALUsrc (ALUsrc),
-    .in0    (Read1),
+    .in0    (Read2),
     .in1    (ImmOP),
     .Out    (MuxOut)
 

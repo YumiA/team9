@@ -19,22 +19,36 @@ module ALU #(
     output logic [DATA_WIDTH-1:0]     SUM,
     output logic                      EQ
 
-)
+);
 
 //combinational logic so not using always_ff, these are all the different opcodes. SLT sets the output SUM to 1 if
 //op1 > op2, else sets it to 0, EQ is 1 if both the operands equal eachother.
 
-if (ALUCtrl == 000) SUM = ALUOP1 + ALUOP2; //add
-if (ALUCtrl == 001) SUM = ALUOP1 - ALUOP2; //subtract
-if (ALUCtrl == 010) SUM = ALUOP1 & ALUOP2; //and
-if (ALUCtrl == 011) SUM = ALUOP1 | ALUOP2; //or
-if (ALUCtrl == 101) begin //SLT (set less than)
-    if(ALUOP1 > ALUOP2) Sum = 32'b1;
-    else Sum = 32'b0;
-end
+always_comb
+    begin
 
-//setting EQ
-if (ALUOP1 == ALUOP2) EQ = 0'b1;
+    case (ALUCtrl)
+        3'b000: SUM = ALUOP1 + ALUOP2; //add
+        3'b001: SUM = ALUOP1 - ALUOP2; //subtract
+        3'b010: SUM = ALUOP1 & ALUOP2; //and
+        3'b011: SUM = ALUOP1 | ALUOP2; //or
+        default: SUM = 32'b0;
+
+
+    endcase
+
+    if (ALUCtrl == 3'b101) begin //SLT (set less than)
+        if(ALUOP1 > ALUOP2) assign SUM = 32'b1;
+        else assign SUM = 32'b0;
+    end
+
+    //setting EQ
+    if (ALUOP1 == ALUOP2) assign EQ = 1'b1;
+    else assign EQ = 1'b0;
+
  
+    end
+
+
 
 endmodule

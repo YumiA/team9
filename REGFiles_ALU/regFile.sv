@@ -5,7 +5,7 @@ item, which is really the most recent output of the ALU, because as long as WEN 
 the most recently written value.
 */
 
-module RegFile #(
+module regFile #(
 
     //Not the Address and data widths are not equal
     parameter DATA_WIDTH = 32,
@@ -25,7 +25,7 @@ module RegFile #(
 
 );
 
-logic [DATA_WIDTH-1:0] rom_array[2**ADDRESS_WIDTH-1:0]
+logic [DATA_WIDTH-1:0] rom_array[2**ADDRESS_WIDTH-1:0];
 
 always_ff @(posedge clk) begin
 
