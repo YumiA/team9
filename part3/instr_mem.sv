@@ -13,7 +13,8 @@ initial begin
         $readmemh("instr.mem", rom_array);
 end;
 
-always_comb 
+always_comb begin 
     instr = rom_array[PC]
+end
 
 endmodule

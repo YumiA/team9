@@ -10,9 +10,12 @@ module sign_extend#(
 
 logic [IMM_WIDTH-1:0] Imm;
 always_comb begin
-    if (ImmSrc == 0){
+    if (ImmSrc == 0) begin
         ImmOp = {{20{instr[31]}}, instr[31:20]}
     else if (ImmSrc == 1)
         ImmOp = {{20{instr[31]}}, instr[31], instr[7], instr[30:25], instr[11:8]}
+    end
 
 end
+
+endmodule

@@ -12,3 +12,5 @@ always_comb begin
     rs2 = instr[24:20]
     rsd = instr[11:7]
 end
+
+endmodule
