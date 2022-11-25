@@ -86,24 +86,28 @@ void Vcpu___024root__trace_chg_sub_0(Vcpu___024root* vlSelf, VerilatedVcd::Buffe
         bufp->chgIData(oldp+41,(vlSelf->cpu__DOT__instruction),32);
         bufp->chgBit(oldp+42,(vlSelf->cpu__DOT__WEn));
         bufp->chgCData(oldp+43,(vlSelf->cpu__DOT__ALUctrl),3);
-        bufp->chgBit(oldp+44,(vlSelf->cpu__DOT__ALUsrc));
-        bufp->chgBit(oldp+45,(vlSelf->cpu__DOT__immSrc));
-        bufp->chgIData(oldp+46,(vlSelf->cpu__DOT__ALUop2),32);
-        bufp->chgCData(oldp+47,((0x1fU & (vlSelf->cpu__DOT__instruction 
+        bufp->chgBit(oldp+44,(vlSelf->cpu__DOT__immSrc));
+        bufp->chgIData(oldp+45,(vlSelf->cpu__DOT__ALUop2),32);
+        bufp->chgCData(oldp+46,((0x1fU & (vlSelf->cpu__DOT__instruction 
                                           >> 0xfU))),5);
-        bufp->chgCData(oldp+48,((0x1fU & (vlSelf->cpu__DOT__instruction 
+        bufp->chgCData(oldp+47,((0x1fU & (vlSelf->cpu__DOT__instruction 
                                           >> 0x14U))),5);
+        bufp->chgCData(oldp+48,((0x7fU & vlSelf->cpu__DOT__instruction)),7);
+        bufp->chgCData(oldp+49,((7U & (vlSelf->cpu__DOT__instruction 
+                                       >> 0xcU))),3);
+        bufp->chgSData(oldp+50,((vlSelf->cpu__DOT__instruction 
+                                 >> 0x14U)),12);
     }
-    bufp->chgBit(oldp+49,(vlSelf->clk));
-    bufp->chgBit(oldp+50,(vlSelf->rst));
-    bufp->chgBit(oldp+51,(vlSelf->EQOut));
-    bufp->chgIData(oldp+52,(vlSelf->a0),32);
-    bufp->chgBit(oldp+53,(vlSelf->WEnOut));
-    bufp->chgIData(oldp+54,(vlSelf->cpu__DOT__PC),32);
-    bufp->chgIData(oldp+55,(((IData)(4U) + vlSelf->cpu__DOT__PC)),32);
-    bufp->chgIData(oldp+56,((vlSelf->cpu__DOT__Imm 
+    bufp->chgBit(oldp+51,(vlSelf->clk));
+    bufp->chgBit(oldp+52,(vlSelf->rst));
+    bufp->chgBit(oldp+53,(vlSelf->EQOut));
+    bufp->chgIData(oldp+54,(vlSelf->a0),32);
+    bufp->chgBit(oldp+55,(vlSelf->WEnOut));
+    bufp->chgIData(oldp+56,(vlSelf->cpu__DOT__PC),32);
+    bufp->chgIData(oldp+57,(((IData)(4U) + vlSelf->cpu__DOT__PC)),32);
+    bufp->chgIData(oldp+58,((vlSelf->cpu__DOT__Imm 
                              + vlSelf->cpu__DOT__PC)),32);
-    bufp->chgIData(oldp+57,(((((0x319U == ((0x3f8U 
+    bufp->chgIData(oldp+59,(((((0x319U == ((0x3f8U 
                                             & (vlSelf->cpu__DOT__instruction 
                                                << 3U)) 
                                            | (7U & 

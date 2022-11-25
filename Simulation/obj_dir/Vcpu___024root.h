@@ -20,7 +20,6 @@ class Vcpu___024root final : public VerilatedModule {
     CData/*0:0*/ cpu__DOT__EQ;
     CData/*0:0*/ cpu__DOT__WEn;
     CData/*2:0*/ cpu__DOT__ALUctrl;
-    CData/*0:0*/ cpu__DOT__ALUsrc;
     CData/*0:0*/ cpu__DOT__immSrc;
     CData/*0:0*/ __Vclklast__TOP__clk;
     CData/*0:0*/ __Vclklast__TOP__rst;

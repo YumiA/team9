@@ -52,6 +52,10 @@ logic                             immSrc;
 logic [DATA_WIDTH-1:0]            ALUop2;
 logic [ADDRESS_WIDTH-1:0]         rs1;
 logic [ADDRESS_WIDTH-1:0]         rs2;
+logic [6:0]                       opcode;
+logic [14:12]                     funct3;
+logic  [31:20]                    Imm31to20;
+logic  [11:7]                     Imm11to7;
 
 ALU ALU (
     .ALUCtrl   (ALUctrl),
@@ -84,14 +88,16 @@ instr_mem InstrMem (
 sign_extend Sec (
 
     .ImmSrc   (immSrc),
-    .instr    (instruction),
+    .Imm31to20    (Imm31to20),
+    .Imm11to7     (Imm11to7),
     .ImmOp    (Imm)
 
 );
 
 control_unit CtrlUnit (
     .EQ         (EQ),
-    .instr      (instruction),
+    .opcode     (opcode),
+    .funct3     (funct3),
     .RegWrite   (WEn),
     .ALUctrl    (ALUctrl),
     .ALUsrc     (ALUsrc),
@@ -103,7 +109,11 @@ decode_instr Decode (
     .instr      (instruction),
     .rs1        (rs1),
     .rs2        (rs2),
-    .rsd        (rd)
+    .rsd        (rd),
+    .opcode     (opcode),
+    .funct3     (funct3),
+    .Imm31to20  (Imm31to20),
+    .Imm11to7   (Imm11to7)
 );
 
 regFile regfile (

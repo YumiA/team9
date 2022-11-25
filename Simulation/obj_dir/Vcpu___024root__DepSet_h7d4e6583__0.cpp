@@ -55,14 +55,12 @@ VL_INLINE_OPT void Vcpu___024root___sequent__TOP__2(Vcpu___024root* vlSelf) {
     if ((0x98U == ((0x3f8U & (vlSelf->cpu__DOT__instruction 
                               << 3U)) | (7U & (vlSelf->cpu__DOT__instruction 
                                                >> 0xcU))))) {
-        vlSelf->cpu__DOT__WEn = 1U;
         vlSelf->cpu__DOT__ALUctrl = 0U;
         vlSelf->cpu__DOT__immSrc = 0U;
-        vlSelf->cpu__DOT__ALUsrc = 1U;
+        vlSelf->cpu__DOT__WEn = 1U;
     } else {
-        vlSelf->cpu__DOT__WEn = 0U;
         vlSelf->cpu__DOT__ALUctrl = 7U;
-        vlSelf->cpu__DOT__ALUsrc = 0U;
+        vlSelf->cpu__DOT__WEn = 0U;
     }
     vlSelf->cpu__DOT__immSrc = (0x319U == ((0x3f8U 
                                             & (vlSelf->cpu__DOT__instruction 
@@ -71,31 +69,27 @@ VL_INLINE_OPT void Vcpu___024root___sequent__TOP__2(Vcpu___024root* vlSelf) {
                                               (vlSelf->cpu__DOT__instruction 
                                                >> 0xcU))));
     vlSelf->WEnOut = vlSelf->cpu__DOT__WEn;
-    if (vlSelf->cpu__DOT__immSrc) {
-        if (vlSelf->cpu__DOT__immSrc) {
-            vlSelf->cpu__DOT__Imm = (((- (IData)((vlSelf->cpu__DOT__instruction 
-                                                  >> 0x1fU))) 
-                                      << 0xcU) | ((0x800U 
-                                                   & (vlSelf->cpu__DOT__instruction 
-                                                      >> 0x14U)) 
-                                                  | ((0x400U 
-                                                      & (vlSelf->cpu__DOT__instruction 
-                                                         << 3U)) 
-                                                     | ((0x3f0U 
-                                                         & (vlSelf->cpu__DOT__instruction 
-                                                            >> 0x15U)) 
-                                                        | (0xfU 
-                                                           & (vlSelf->cpu__DOT__instruction 
-                                                              >> 8U))))));
-        }
-    } else {
-        vlSelf->cpu__DOT__Imm = (((- (IData)((vlSelf->cpu__DOT__instruction 
+    vlSelf->cpu__DOT__Imm = ((IData)(vlSelf->cpu__DOT__immSrc)
+                              ? (((- (IData)((vlSelf->cpu__DOT__instruction 
+                                              >> 0x1fU))) 
+                                  << 0xcU) | ((0x800U 
+                                               & (vlSelf->cpu__DOT__instruction 
+                                                  >> 0x14U)) 
+                                              | ((0x400U 
+                                                  & (vlSelf->cpu__DOT__instruction 
+                                                     << 3U)) 
+                                                 | ((0x3f0U 
+                                                     & (vlSelf->cpu__DOT__instruction 
+                                                        >> 0x15U)) 
+                                                    | (0xfU 
+                                                       & (vlSelf->cpu__DOT__instruction 
+                                                          >> 8U))))))
+                              : (((- (IData)((vlSelf->cpu__DOT__instruction 
                                               >> 0x1fU))) 
                                   << 0xcU) | (vlSelf->cpu__DOT__instruction 
-                                              >> 0x14U));
-    }
-    vlSelf->cpu__DOT__ALUop2 = ((IData)(vlSelf->cpu__DOT__ALUsrc)
-                                 ? ((IData)(vlSelf->cpu__DOT__ALUsrc)
+                                              >> 0x14U)));
+    vlSelf->cpu__DOT__ALUop2 = ((IData)(vlSelf->cpu__DOT__WEn)
+                                 ? ((IData)(vlSelf->cpu__DOT__WEn)
                                      ? vlSelf->cpu__DOT__Imm
                                      : vlSelf->cpu__DOT__read2)
                                  : vlSelf->cpu__DOT__read2);

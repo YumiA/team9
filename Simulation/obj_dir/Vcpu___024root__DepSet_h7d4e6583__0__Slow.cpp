@@ -72,7 +72,6 @@ VL_ATTR_COLD void Vcpu___024root___ctor_var_reset(Vcpu___024root* vlSelf) {
     vlSelf->cpu__DOT__instruction = VL_RAND_RESET_I(32);
     vlSelf->cpu__DOT__WEn = VL_RAND_RESET_I(1);
     vlSelf->cpu__DOT__ALUctrl = VL_RAND_RESET_I(3);
-    vlSelf->cpu__DOT__ALUsrc = VL_RAND_RESET_I(1);
     vlSelf->cpu__DOT__immSrc = VL_RAND_RESET_I(1);
     vlSelf->cpu__DOT__ALUop2 = VL_RAND_RESET_I(32);
     vlSelf->cpu__DOT__ProgramCount__DOT__next_PC = VL_RAND_RESET_I(32);
