@@ -24,12 +24,16 @@ module cpu #(
     output logic [ADDRESS_WIDTH-1:0]         read2,
     output logic [ADDRESS_WIDTH-1:0]         writeAddr,
     output logic [INSTR_WIDTH-1:0]           instruction,
+    output logic [ALU_CONTROL_LENGTH-1:0]    ALUctrl,
+    output logic                             ALUsrc
+    output logic                             WEn;
 
 );
 
 //all internal signals
 logic [PC_WIDTH-1:0]              PC;
 logic                             PCsrc;
+logic                             EQ;
 logic [DATA_WIDTH-1:0]            Imm;
 logic [DATA_WIDTH-1:0]            Write;
 logic [ADDRESS_WIDTH-1:0]         read1;
@@ -52,7 +56,7 @@ part2 RegALU (
     .ImmOP     (Imm),
     .ALUctrl   (ALUctrl),
     .a0        (a0),
-    .EQ        (eq)
+    .EQ        (EQ)
 );
 
 ProgramCounter PC (
