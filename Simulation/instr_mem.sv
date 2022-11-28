@@ -8,10 +8,11 @@ module instr_mem #(
 
 
 logic [DATA_WIDTH-1:0]  rom_array   [2**ADDRESS_WIDTH-1:0];
+//logic [DATA_WIDTH-1:0]  rom_array   [5:0];
 
 initial begin
         $readmemh("instr.mem", rom_array);
-end;
+end
 
 always_comb begin 
     instr = rom_array[PC];
